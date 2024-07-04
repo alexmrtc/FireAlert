@@ -3,6 +3,7 @@ using FireAlert.Data;
 using FireAlert.DTOs;
 using FireAlert.DTOs.Create;
 using FireAlert.DTOs.Update;
+using FireAlert.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,14 +16,16 @@ namespace FireAlert.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
+        private readonly FireApi _fireApiService;
 
-        public FireAlertController(ApplicationDbContext context, IMapper mapper)
+        public FireAlertController(ApplicationDbContext context, IMapper mapper, FireApi fireApiService)
         {
             _context = context;
             _mapper = mapper;
+            _fireApiService = fireApiService;
         }
 
-        [HttpGet]
+        [HttpGet("getFireAlerts")]
         public async Task<ActionResult<List<FireAlertDto>>> GetAllFireAlerts()
         {
             var fireAlerts = await _context.FireAlerts.ToListAsync();
@@ -74,7 +77,13 @@ namespace FireAlert.Controllers
             _context.Remove(fireAlert);
             await _context.SaveChangesAsync();
             return NoContent();
+        }
 
+        [HttpGet("getFires")]
+        public async Task<ActionResult> GetAllFires()
+        {
+            await _fireApiService.ImportarDatosAsync();
+            return Ok();
         }
     }
 }
