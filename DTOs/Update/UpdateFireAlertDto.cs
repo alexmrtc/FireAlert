@@ -1,8 +1,7 @@
-namespace FireAlert.Models;
+namespace FireAlert.DTOs.Update;
 
-public class FireAlert
+public class UpdateFireAlertDto
 {
-    public int Id { get; set; }
     public Decimal Latitude { get; set; }
     public Decimal Longitude { get; set; }
     public String FireDescription { get; set; }

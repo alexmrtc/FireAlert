@@ -1,6 +1,6 @@
-namespace FireAlert.Models;
+namespace FireAlert.DTOs;
 
-public class FireAlert
+public class FireAlertDto
 {
     public int Id { get; set; }
     public Decimal Latitude { get; set; }
