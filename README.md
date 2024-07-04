@@ -16,9 +16,7 @@ FireAlert is a comprehensive ASP.NET Core Web API application designed to manage
   - [UserController](#usercontroller)
 - [Data Transfer Objects (DTOs)](#data-transfer-objects-dtos)
   - [CreateFireAlertDto](#createfirealertdto)
-  - [CreateUserDto](#createuserdto)
 - [Dockerfile](#dockerfile)
-- [Contact](#contact)
 
 ## Technologies Used
 
